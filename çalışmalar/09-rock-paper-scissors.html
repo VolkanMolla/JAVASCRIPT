@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/Extra_css/extra.css" />
+  <title> 09-Rock paper scissors</title>
+  <style></style>
+</head>
+
+<body class="bg-success-subtle">
+  <div class="container mt-5 mx-auto">
+    <div class="row mt-5">
+      <div class="col d-flex flex-column text-center align-items-center justify-content-center mt-5">
+        <p class="fs-1">Rock Paper Scissors</p>
+        <div>
+
+          <button type="button" class="btn btn-dark" onclick="
+        playgame('rock');
+        ">rock</button>
+
+          <button type="button" class="btn btn-success" onclick="
+        playgame('paper');
+        ">paper</button>
+
+          <button type="button" class="btn btn-danger" onclick="
+        playgame('scissors');
+        ">scissors</button>
+        </div>
+
+        <p class="js-result mt-4">Good luck Have Fun!</p>
+        <p class="js-moves"></p>
+        <p class="js-score"></p>
+        <button type="button" class="btn btn-outline-primary" onclick="
+        score.computer = 0;
+        score.player = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        updateScore();
+        ">Reset score!</button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    /*
+    let score = JSON.parse(localStorage.getItem('score'))
+     || {
+      player: 0,
+      computer: 0,
+      ties: 0
+    };
+
+    // üstteki
+    /////////////*/
+    //////////////////////
+
+    let score = JSON.parse(localStorage.getItem('score')) || {
+      player: 0,
+      computer: 0,
+      ties: 0
+    }
+    
+    let jsResult = document.querySelector('.js-result');
+
+    function updateScore() {
+      document.querySelector('.js-score').innerHTML =
+        `Wins: ${score.player}. Losses: ${score.computer}. Ties: ${score.ties}`;
+    }
+    updateScore();
+    ////////////////////////
+    function playgame(playerMove) {
+      let result = '';
+      const computerMove = pickComputerMove();
+      if (playerMove === 'scissors') {
+        if (computerMove === 'scissors') {
+          result = 'Tie!'
+        } else if (computerMove === 'rock') {
+          result = 'You Lose!';
+        } else {
+          result = `You win!`;
+        }
+      } else if (playerMove === 'paper') {
+        if (computerMove === 'paper') {
+          result = 'Tie!'
+        } else if (computerMove === 'scissors') {
+          result = 'You Lose!';
+        } else {
+          result = `You win!`;
+        }
+      } else if (playerMove === 'rock') {
+        if (computerMove === 'rock') {
+          result = 'Tie!'
+        } else if (computerMove === 'paper') {
+          result = 'You Lose!';
+        } else {
+          result = `You win!`;
+        }
+      }
+
+      if (result === 'You win!') {
+        score.player++;
+        jsResult.classList = ('js-result mt-4 text-success');
+      } else if (result === 'You Lose!') {
+        score.computer++;
+        jsResult.classList = ('js-result mt-4 text-danger');
+      } else if (result === 'Tie!') {
+        score.ties++;
+        jsResult.classList = ('js-result mt-4 text-warning');
+      }
+
+      localStorage.setItem('score', JSON.stringify(score));
+      updateScore();
+      document.querySelector('.js-result').innerHTML = result;
+      document.querySelector('.js-moves').innerHTML = `You: ${playerMove} - ${computerMove}:Computer`
+
+
+    }
+
+    function pickComputerMove() {
+      const randomNumber = Math.random();
+      let computerMove = '';
+      if (randomNumber < 1 / 3) {
+        computerMove = 'rock';
+      } else if (randomNumber < 2 / 3) {
+        computerMove = 'paper';
+      } else {
+        computerMove = 'scissors';
+      }
+      return computerMove;
+    }
+  </script>
+
+  <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+  <script src="
+  
+  js/Extra_js/extra.js">
+
+  </script>
+</body>
+
+</html>

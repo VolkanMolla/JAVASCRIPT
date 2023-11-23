@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/Extra_css/extra.css" />
+  <title>CALCULATOR</title>
+  <style></style>
+</head>
+
+<body class="bg-dark">
+  <div class="container m-5">
+    <div class="row">
+      <div class="col">
+
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('1')
+        ">
+          1
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('2')
+        ">
+          2
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('3')
+        ">
+          3
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('+')
+        ">
+          +
+        </button> <br>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('4')
+        ">
+          4
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('5')
+        ">
+          5
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('6')
+        ">
+          6
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('-')
+        ">
+          -
+        </button> <br>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('7')
+        ">
+          7
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('8')
+        ">
+          8
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('9')
+        ">
+          9
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('/')
+        ">
+          /
+        </button> <br>
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('0')
+        ">
+          0
+        </button>
+        
+        <button type="button" class="btn btn-danger" onclick="
+        updateCalculation('*')
+        ">
+          *
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        console.log(eval(operation));
+        ">
+          =
+        </button>
+        <button type="button" class="btn btn-danger" onclick="
+        console.log(operation='');
+        ">
+          Clear
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let operation = '';
+
+    function updateCalculation(number) {
+      operation += number;
+      console.log(operation);
+    }
+  </script>
+
+  <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+  <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>

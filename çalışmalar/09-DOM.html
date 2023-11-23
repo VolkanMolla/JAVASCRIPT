@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <title>DOM</title>
+    <style></style>
+</head>
+
+<body class="bg-dark">
+    <div class="container m-5">
+        <div class="row">
+            <div class="col">
+
+                <button type="button">first</button>
+                <button type="button" class="js-button" >second</button>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+     /*
+     document.title = ' gud jab yavrum';
+        console.log(document.title);
+        console.log(document.body);
+        console.log(typeof document.body);
+        console.log(document.body.innerHTML);
+        document.body.innerHTML = 
+        `
+                <button type="button" style="background-color: red; padding: 20px;" >Hello lağgnnn</button>
+        `
+   */
+
+      console.log(document.querySelector('button'));
+      document.querySelector('button').innerHTML = 'changed';
+
+      const buttonElement = document.querySelector('.js-button');
+
+      console.log(buttonElement);
+
+
+    </script>
+</body>
+
+</html>

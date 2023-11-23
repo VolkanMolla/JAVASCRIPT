@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/Extra_css/extra.css" />
+    <title>DOM-PROJECTS</title>
+    <style></style>
+</head>
+
+<body class="bg-dark text-white px-3" style="font-family: Arial, Helvetica, sans-serif;">
+    <div class="container m-5">
+        <div class="row">
+            <div class="col">
+
+                <p>Youtube Subscribe Button</p>
+                <button type="button" class="btn btn-outline-danger  border-danger js-subs-button"
+                    onclick="subButtonClick()" id="subButton">Subscribe</button>
+                <p>amazon shipping calculator</p>
+                <p> under 40$ - 10$ shipping</p>
+                <p> over 40 $ - Free shipping</p>
+                <p class="d-flex gap-1">
+                    <input type="text" class="js-shipping form-control w-50" placeholder="enter here" autocomplete="off"
+                        onkeydown="handleCostKeydown(event)">
+                    <button type="button" class="btn btn-success p-3" onclick="calculateShipping()">Calculate</button></p>
+
+                <p class="js-shipping-result"></p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function subButtonClick() {
+
+            const buttonElement = document.querySelector('.js-subs-button');
+
+            if (buttonElement.innerHTML === 'Subscribe') {
+                buttonElement.innerHTML = 'Subscribed'
+                buttonElement.classList.add('active');
+
+            } else {
+                buttonElement.innerHTML = 'Subscribe';
+                buttonElement.classList.remove('active')
+            }
+        }
+
+        function calculateShipping() {
+            let cost = document.querySelector('.js-shipping');
+            let shippingResult = document.querySelector('.js-shipping-result');
+            let costValue = Number(cost.value);
+
+            if (costValue < 40) {
+                costValue = costValue + 10;
+            }
+
+            shippingResult.innerHTML = `$${costValue}`;
+
+        }
+
+        function handleCostKeydown(event) {
+            if (event.key === 'Enter') {
+                calculateShipping()
+            };
+        }
+    </script>
+
+
+
+    <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+    <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>

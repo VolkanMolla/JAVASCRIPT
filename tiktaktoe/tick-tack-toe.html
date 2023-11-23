@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Bootstrap_css/bootstrap.min.css">
+    <title>Tic Tac Toe</title>
+    <style>
+        * {
+            margin: 0 !important;
+            padding: 0 !important;
+            box-sizing: border-box !important;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .myBox {
+            width: 150px;
+            height: 150px;
+            border: 2px solid gray;
+            cursor: pointer;
+            font-size: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .myborder {
+            width: 450px;
+            height: 450px;
+        }
+
+        :root {
+            --orange: orange;
+            --winning-blocks: rgb(66, 66, 66);
+            /* Kazanan blokların rengi */
+        }
+
+        .myBox[data-value="X"] {
+            color:chocolate;
+        }
+
+        .myBox[data-value="O"] {
+            color:blueviolet;
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-white">
+    <div class="">
+        <div class="container d-flex mb-3 gap-2">
+            <div class="playerText display-3 mx-auto">Tic Tac Toe</div>
+        </div>
+        <div class="col-12 d-flex">
+            <div class="myBox" id="0" data-value=""></div>
+            <div class="myBox" id="1" data-value=""></div>
+            <div class="myBox" id="2" data-value=""></div>
+        </div>
+        <div class="col-12 d-flex">
+            <div class="myBox" id="3" data-value=""></div>
+            <div class="myBox" id="4" data-value=""></div>
+            <div class="myBox" id="5" data-value=""></div>
+        </div>
+        <div class="col-12 d-flex">
+            <div class="myBox" id="6" data-value=""></div>
+            <div class="myBox" id="7" data-value=""></div>
+            <div class="myBox" id="8" data-value=""></div>
+        </div>
+        <div class="d-flex">
+            <button type="button" class="restartBtn btn btn-danger fs-5 p-2 mx-auto mt-3">Restart</button>
+        </div>
+    </div>
+    <script>
+        let playerText = document.querySelector('.playerText');
+        let restartBtn = document.querySelector('.restartBtn');
+        let boxes = Array.from(document.getElementsByClassName('myBox'));
+        let winnerIndicator = getComputedStyle(document.body).getPropertyValue('--winning-blocks');
+
+        const O_Text = 'O';
+        const X_Text = 'X';
+        let currentPlayer = X_Text;
+        let spaces = Array(9).fill(null);
+        let moves = 0;
+
+        // Kazanan kombinasyonları
+        const winningCombos = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        function boxClicked(e) {
+            const id = e.target.id;
+            if (!spaces[id]) {
+                spaces[id] = currentPlayer;
+                e.target.innerText = currentPlayer;
+                e.target.setAttribute('data-value', currentPlayer); // X veya O'yu data-value'ya atayın
+                moves++;
+
+                if (playerHasWon() !== false) {
+                    playerText.innerText = `${currentPlayer} has won!`;
+                    let winning_blocks = playerHasWon();
+
+                    // Kazanan kutuların arka plan rengini değiştir
+                    winning_blocks.forEach(box => boxes[box].style.backgroundColor = winnerIndicator);
+
+                    // Kutulara tıklanmasını engelle
+                    boxes.forEach(box => box.removeEventListener('click', boxClicked));
+
+                    return;
+                } else if (moves === 9) {
+                    playerText.innerText = "It's a draw!";
+                } else {
+                    currentPlayer = (currentPlayer === X_Text) ? O_Text : X_Text;
+                    playerText.textContent = `${currentPlayer}'s Turn`;
+                }
+
+            }
+
+        }
+
+        function playerHasWon() {
+            for (const condition of winningCombos) {
+                let [a, b, c] = condition;
+                if (spaces[a] && spaces[a] === spaces[b] && spaces[a] === spaces[c]) {
+                    return condition; // Kazanan kombinasyonu döndür
+                }
+            }
+            return false;
+        }
+
+        restartBtn.addEventListener('click', restart);
+
+        function restart() {
+            spaces.fill(null);
+            moves = 0;
+            boxes.forEach(box => {
+                box.innerText = '';
+                box.style.backgroundColor = ''; // Arka plan rengini eski haline döndür
+            });
+            playerText.innerText = "Tic Tac Toe";
+
+            // Kutulara tıklamayı tekrar etkinleştir
+            boxes.forEach(box => box.addEventListener('click', boxClicked));
+
+            currentPlayer = X_Text;
+        }
+
+        // Oyuna başla
+        boxes.forEach(box => box.addEventListener('click', boxClicked));
+    </script>
+</body>
+
+</html>

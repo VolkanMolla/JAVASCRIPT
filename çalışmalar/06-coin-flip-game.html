@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/Extra_css/extra.css" />
+    <title>06 müze</title>
+    <style></style>
+</head>
+
+<body class="bg-dark">
+    <div class="container m-5">
+        <div class="row">
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const randomNumber = Math.random(); // 0 ile 1 arasında rastgele bir sayı oluşturur
+        const guess = 'Tura'; // Kullanıcının tahmini
+        const coin = randomNumber <= 0.5 ? 'Yazı' : 'Tura'; // Rastgele sonucu belirler
+        const result = guess === coin ? 'You win!' : 'You Lose!'; // Tahmin ile sonucu karşılaştırır
+        console.log('Tahmin:', guess, 'Sonuc:', coin, result); // Sonucu ekrana yazdırır
+    </script>
+
+    <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+    <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>

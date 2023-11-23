@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+</style>
+
+<body>
+
+
+
+    <script>
+        function great(name) {
+            name === undefined ? console.log('Hi There!') : console.log(`Hello ${name}`);
+        }
+
+        great();
+
+        /*Bu kod,
+        great() çağrıldığında,"Hi There!" yazdırılır.
+        great("John") çağrıldığında, "Hello John" yazdırılır.
+        */
+    </script>
+    <script>
+        // CHATGPT ÖRNEĞİ
+        function convertTemperatureAndLog(inputDegree, inputUnit) {
+            let outputDegree, outputUnit;
+
+            if (inputUnit === 'C') {
+                outputDegree = (inputDegree * 9 / 5) + 32;
+                outputUnit = 'F';
+            } else if (inputUnit === 'F') {
+                outputDegree = Math.round((inputDegree - 32) * 5 / 9);
+                outputUnit = 'C';
+            }
+
+            console.log(`${inputDegree}°${inputUnit} = ${outputDegree}°${outputUnit}`);
+           
+            
+        }
+        convertTemperatureAndLog(86,'F');
+        convertTemperatureAndLog(30,'C');
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/Extra_css/extra.css" />
+    <title>advanced functions</title>
+    <style></style>
+</head>
+
+<body class="bg-dark text-white px-3">
+    <div class="container m-5">
+        <div class="row">
+            <div class="col">
+
+                <button type="button" class="js-button">click</button>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <script>
+        /*
+        function greeting(){
+            console.log('hello');
+        }
+       greeting();
+       let a = 2;
+
+       const function1 = function (){
+        console.log('hello2');
+       }
+
+       console.log(function1);
+       console.log(typeof function1);
+
+       function1();
+
+       const obejct1 = {
+        num: 2,
+        fun: function(){
+            console.log("hi");
+        }
+       };
+       obejct1.fun();
+
+       function display(param){
+        console.log(param);
+       };
+
+       display(2);
+
+       function run(param){
+        param();
+       };
+       run(function(){
+        console.log('hello4 ');
+       });
+       
+
+       setTimeout(function(){
+        console.log('timeout');
+        console.log('timeout 2');
+       }, 3000);
+
+       console.log('next line');
+       const interval = 1;
+       setInterval(() => {
+        console.log('hi biçıs');
+       }, 2000);
+
+       console.log('nextline 2');
+       
+
+       [
+        'make dinner',
+        'wash dishes',
+        'watch youtube'
+       ].forEach((value, index) =>{
+        console.log(value);
+        console.log(index);
+       })
+
+       const regularFunction = function(param1, param2){
+        console.log('hello');
+        return 5;
+       };
+
+       regularFunction();
+
+       const arrowFunction = (param1, param2) =>{
+        console.log('hello');
+        return 5;
+       };
+
+       arrowFunction();
+
+       const oneParam = (param)=>{
+        console.log(param + 1);
+       };
+
+       oneParam(2);
+
+       const oneline = () => 2+3;
+       console.log(oneline());
+
+       const obejct2 = {
+        method1: () =>{
+            console.log('method1 called');
+        },
+        
+        method2(){
+            console.log('method2 called');
+        }
+       }
+
+       obejct2.method1();
+       obejct2.method2();
+       const eventListener = () =>{
+        console.log('click');
+       };
+       const buttonElement = document.querySelector('.js-button');
+
+       buttonElement.addEventListener('click',eventListener);
+
+       buttonElement.removeEventListener('click',eventListener)
+        buttonElement.addEventListener('click', () =>{
+        console.log('click2');
+       })*/
+        const myArray = [1, -3, 5].filter((value, index) => {
+            if (value >= 0) return true;
+            else return false;
+        });
+        console.log(myArray);
+
+
+        const myArray2 = [3, 5, 2].map((value, index) => {
+            return value * 2;
+            // return 10;  >> [10, 10, 10]
+        });
+        console.log(myArray2);
+
+        //üstteki kodun kısa hali *shortcut*
+        const myArray3 = [3, 5, 2].map(value => value * 2);
+        console.log(myArray3);
+    </script>
+
+
+
+    <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+    <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>

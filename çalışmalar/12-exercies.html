@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/Extra_css/extra.css" />
+    <title>App</title>
+    <style></style>
+</head>
+
+<body class="bg-dark text-white px-3">
+    <div class="container m-5">
+        <div class="row">
+            <div class="col-12 mb-3">
+
+                <button type="button" class="btn btn-light js-btnStart" onclick="start()">Start</button>
+
+            </div>
+            <div class="col-12">
+                <button type="button" class="btn btn-success js-addcartBtn" onclick="addcartBtn();">Add to cart</button>
+                <p class="js-adcartMessage"></p>
+            </div>
+            <div class="col-12">
+                <button type="button" class="btn btn-warning js-add">Add</button>
+                <button type="button" class="btn btn-light js-remove">Remove</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        const add = () => {
+            console.log('5');
+        };
+
+        add();
+        add();
+
+        function runTwice(fun) {
+            fun();
+            fun();
+        };
+
+        runTwice(() => {
+            console.log("Hello");
+        });
+
+        runTwice(add);
+
+        function start() {
+            let startBtn = document.querySelector('.js-btnStart');
+
+            startBtn.innerHTML = 'Loading...';
+            setTimeout(() => {
+                startBtn.innerHTML = 'Finished!.';
+            }, 1000);
+        };
+        let timeoutID;
+
+        function addcartBtn() {
+            let addcartBtnMessage = document.querySelector('.js-adcartMessage');
+            addcartBtnMessage.innerHTML = 'Added';
+            clearTimeout(timeoutID);
+
+            timeoutID = setTimeout(() => {
+                addcartBtnMessage.innerHTML = '';
+            }, 2000);
+
+        };
+
+        let msgCount = 1;
+        document.querySelector('.js-add').addEventListener('click', () => msgCount++);
+        document.querySelector('.js-remove').addEventListener('click', () => msgCount--);
+
+        setInterval(() => {
+            if (msgCount < 0) {
+                msgCount = 0;
+            }
+            if (document.title === 'App' && msgCount > 0) {
+
+                document.title = `(${msgCount}) New Messages`;
+
+            } else {
+                document.title = 'App';
+
+            };
+
+        }, 1000);
+    </script>
+
+
+
+    <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+    <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>

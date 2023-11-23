@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/Extra_css/extra.css" />
+    <title>10-d</title>
+    <style>
+
+    </style>
+</head>
+
+<body class="bg-dark text-white">
+    <div class="container m-5">
+        <div class="row">
+            <div class="col">
+
+                <button type="button" class="btn btn-light myButton1" onclick="toggleButton(1)">Gaming</button>
+                <button type="button" class="btn btn-light myButton2" onclick="toggleButton(2)">Music</button>
+                <button type="button" class="btn btn-light myButton3" onclick="toggleButton(3)">Tech</button>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleButton(buttonNumber) {
+            let button = document.querySelector(`.myButton${buttonNumber}`);
+            if (button.classList.contains('btn-light')) {
+
+                previusButton();
+
+                button.classList.replace('btn-light', 'active');
+            
+                
+            } else {
+                button.classList.replace('active', 'btn-light');
+            }
+        }
+
+
+        function previusButton(){
+            const prevBtn = document.querySelector('.active');
+            if (prevBtn){
+                prevBtn.classList.replace("active", "btn-light");
+            }
+        }
+    </script>
+
+    <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+    <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>

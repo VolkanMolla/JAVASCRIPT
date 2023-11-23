@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/Extra_css/extra.css" />
+    <title>TODO LIST </title>
+    <style>
+        /* Ana konteyner */
+        .col {
+            background-color: #fcf9f3;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        /* Başlık */
+        .display-6 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ff6f61;
+        }
+
+        /* Giriş alanları ve buton */
+        .ToDoInput,
+        .doDateInput,
+        .btn-success {
+            width: 50%;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* To-Do öğesi kutusu */
+        .js-todolist {
+            margin-top: 20px;
+        }
+
+        /* To-Do öğeleri */
+        .js-todolist p {
+            background-color: #fff3e3;
+            border: 2px solid #ff6f61 !important;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            /* Başlangıçta görünmez olsun */
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* Silme düğmesi */
+        .js-todolist button {
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        /* Hover etkisi */
+        .js-todolist p:hover {
+            background-color: #ff6f61;
+            color: #fff;
+            border: 2px solid #ff6f61;
+        }
+
+        /* Hover etkisi için silme düğmesi */
+        .js-todolist button:hover {
+            background-color: #fff;
+            color: #ff6f61;
+        }
+
+        /* Fade-in animasyonu */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Fade-out animasyonu */
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-dark px-3">
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col col-md-10 col-lg-8 col-xl-6 mx-auto bg-white p-3">
+                <p class="display-6 text-center mb-4">To Do List</p>
+                <p class="d-flex justify-content-between gap-2">
+                    <input type="text" placeholder="To do name" class="ToDoInput w-50" autocomplete="off">
+                    <input type="date" class="doDateInput w-50">
+                    <button type="button" class="btn btn-success py-2 " onclick="addToDo()">Add</button>
+                    <!-- Hata mesajını görüntülemek için eklenen metin alanı -->
+                   
+                    <p class="text-danger error-message"></p>
+                    <div class="js-todolist ">
+
+                    </div>
+                </p>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Başlangıçta boş bir ToDoList dizisi oluşturun -->
+    <script>
+        let ToDoList = [];
+
+        // Tarayıcı verileri kaydederken ve geri yüklerken localStorage kullanın
+        if (localStorage.getItem('toDoList')) {
+            ToDoList = JSON.parse(localStorage.getItem('toDoList'));
+        }
+
+        // ToDo listesini sayfa yüklenirken görüntülemek için işlevi çağırın
+        renderTodolist();
+
+        // ToDo listesini görüntülemek için işlev
+        function renderTodolist() {
+            // ToDoListHTML adında boş bir HTML dizisi oluşturun
+            let ToDoListHTML = '';
+
+            // ToDoList dizisini dönerek her bir öğeyi HTML olarak oluşturun
+            for (let i = 0; i < ToDoList.length; i++) {
+                const todoObject = ToDoList[i];
+                const {
+                    name,
+                    doDate
+                } = todoObject;
+
+                const html = `
+                <p class="d-flex justify-content-between border border-dark p-2 align-items-center">
+                    <span class="me-4">${name}</span>
+                    <span>${doDate}</span>
+                    <!-- Silme işlemi için "deleteToDoItem" işlevini çağırın -->
+                    <button class="btn btn-danger" onclick="deleteToDoItem(${i})">Delete</button>
+                </p>
+            `;
+
+                // Oluşturulan HTML'i ToDoListHTML dizisine ekleyin
+                ToDoListHTML += html;
+            }
+
+            // HTML içinde ToDo listesini gösteren elemanı güncelleyin
+            document.querySelector('.js-todolist').innerHTML = ToDoListHTML;
+        }
+
+        // Yeni bir ToDo eklemek için işlev
+        function addToDo() {
+            let ToDoInput = document.querySelector('.ToDoInput');
+            let name = ToDoInput.value.trim();
+            let doDateInput = document.querySelector('.doDateInput');
+            let doDate = doDateInput.value;
+
+            // Girişin boş olup olmadığını kontrol edin
+            if (name === '') {
+                // Boş giriş, hata mesajını input alanının altında görüntüler
+                document.querySelector('.error-message').textContent = 'Eksik Bilgi: To-Do ismi girmeniz gerekiyor.';
+                return;
+            }
+
+            // Tarih boşsa, bugünün tarihini al
+            if (doDate === '') {
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = String(today.getMonth() + 1).padStart(2, '0');
+                const day = String(today.getDate()).padStart(2, '0');
+                doDate = `${year}-${month}-${day}`;
+            }
+
+            // Hata mesajını temizler
+            document.querySelector('.error-message').textContent = '';
+
+            // Yeni ToDo öğesini ToDoList dizisine ekleyin
+            ToDoList.push({
+                name,
+                doDate
+            });
+
+            // Input alanlarını temizleyin
+            ToDoInput.value = '';
+            doDateInput.value = '';
+
+            // ToDo listesini güncelleyin ve localStorage'a kaydedin
+            localStorage.setItem('toDoList', JSON.stringify(ToDoList));
+            renderTodolist();
+        }
+
+        // ToDo öğesini silmek için işlev
+        function deleteToDoItem(index) {
+            // Belirtilen dizini kaldırarak ToDoList dizisini güncelleyin
+            ToDoList.splice(index, 1);
+
+            // ToDo listesini güncelleyin ve localStorage'a kaydedin
+            localStorage.setItem('toDoList', JSON.stringify(ToDoList));
+            renderTodolist();
+        }
+    </script>
+
+
+
+
+
+
+
+
+    <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+    <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>

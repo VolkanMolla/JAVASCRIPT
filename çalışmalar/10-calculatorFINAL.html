@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/Extra_css/extra.css" />
+    <title>CALCULATOR</title>
+    <style>
+        .btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 100%;
+            margin: 5px;
+        }
+      
+
+       
+    </style>
+</head>
+
+<body class="bg-black text-white">
+    <div class="container m-5">
+        <div class="row">
+            <div class="col">
+                <p class="js-result fs-1 ms-3 mb-2"></p>
+
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('1')
+        ">
+                    1
+                </button>
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('2')
+        ">
+                    2
+                </button>
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('3')
+        ">
+                    3
+                </button>
+                <button type="button" class="btn btn-warning text-white" onclick="
+        updateCalculation(' + ')
+        ">
+                    +
+                </button> <br>
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('4')
+        ">
+                    4
+                </button>
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('5')
+        ">
+                    5
+                </button>
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('6')
+        ">
+                    6
+                </button>
+                <button type="button" class="btn btn-warning text-white" onclick="
+        updateCalculation(' - ')
+        ">
+                    -
+                </button> <br>
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('7')
+        ">
+                    7
+                </button>
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('8')
+        ">
+                    8
+                </button>
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('9')
+        ">
+                    9
+                </button>
+                <button type="button" class="btn btn-warning text-white" onclick="
+        updateCalculation(' * ')
+        ">
+                    *
+                </button>
+                <br>
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('0')
+        ">
+                    0
+                </button>
+                <button type="button" class="btn btn-dark" onclick="
+        updateCalculation('.')
+        ">
+                    .
+                </button>
+               
+
+                <button type="button" class="btn btn-dark" onclick="
+         calculation = eval(calculation);
+         saveCalculation();
+         displayResult();
+          ">
+                    =
+                </button>
+                <button type="button" class="btn btn-warning text-white" onclick="
+        updateCalculation(' / ')
+        ">
+                    /
+                </button> <br>
+                <button type="button" class="btn btn-dark" onclick="
+                calculation = '';
+                saveCalculation();   
+                displayResult();
+                ">
+                            Clear
+                        </button>
+                
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let calculation = localStorage.getItem('calculation') || '';
+        displayResult();
+
+
+        function updateCalculation(value) {
+            calculation += value;
+            saveCalculation();
+            displayResult();
+
+        }
+
+
+        function saveCalculation() {
+            localStorage.setItem('calculation', calculation);
+        }
+
+        function displayResult() {
+            document.querySelector('.js-result').innerHTML = calculation || '0'
+        }
+    </script>
+
+    <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+    <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>

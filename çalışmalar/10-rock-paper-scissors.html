@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Volkan MOLLA" />
+  <meta name="description" content="Web tasarım ve pazarlama" />
+  <meta name="keywords" content="web,tasarım,dizayn,programlama,yazılım,geliştirme" />
+  <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/projects-css/10-rock-paper-scissors.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <title> 10-Rock paper scissors</title>
+  <style>
+  
+  </style>
+</head>
+
+<body class="bg-dark text-white">
+  <div class="container mt-5 mx-auto">
+    <div class="row mt-5">
+      <div class="col d-flex flex-column text-center align-items-center justify-content-center mt-5">
+        <p class="fs-1 fw-bold">Rock Paper Scissors</p>
+        <div>
+
+          <button type="button" class="bg-dark game-btn" onclick="
+        playgame('rock');
+        "><img src="img/rock-emoji.png" alt=""></button>
+
+          <button type="button" class="bg-dark game-btn" onclick="
+        playgame('paper');
+        "><img src="img/paper-emoji.png" alt=""></button>
+
+          <button type="button" class="bg-dark game-btn" onclick="
+        playgame('scissors');
+        "><img src="img/scissors-emoji.png" alt=""></button>
+        </div>
+
+        <p class="js-moves mt-4 ms-5"></p>
+        <p class="js-result ">Good Luck Have Fun!</p>
+        <p class="js-score"></p>
+        <button type="button" class="btn btn-outline-primary" onclick="
+        score.computer = 0;
+        score.player = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        updateScore();
+        ">Reset score!</button>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+
+  </script>
+
+  <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+  <script src="js/projects-styles/10-rock-paper-scissors.js"></script>
+
+</body>
+
+</html>

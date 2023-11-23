@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/Extra_css/extra.css" />
+    <title>CART QUANTITY</title>
+</head>
+
+<body>
+    <div class="container m-5">
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-success" onclick="updateQuantity(1)">
+                    Add to Cart
+                </button>
+
+
+                <button type="button" class="btn btn-secondary" onclick="updateQuantity(2)">
+                    +2
+                </button>
+
+                <button type="button" class="btn btn-info" onclick="updateQuantity(3)">
+                    +3
+                </button>
+                <button type="button" class="btn btn-danger" onclick="updateQuantity(4)">
+                    +4
+                </button>
+                <button type="button" class="btn btn-warning" onclick="updateQuantity(5)">
+                    +5
+                </button>
+                <button type="button" class="btn btn-dark" onclick="updateQuantity(-1)">
+                    Remove the cart
+                </button>
+                <button type="button" class="btn btn-outline-primary" onclick="updateQuantity(-2) ">
+                    -2
+                </button>
+                <button type="button" class="btn btn-outline-info" onclick="updateQuantity(-3) ">
+                    -3
+                </button>
+
+                <button type="button" class="btn btn-outline-dark" onclick="
+                cartQuantity=0;
+                console.log(`cartQuantity: ${cartQuantity}`)
+                ">
+                    Reset the cart
+                </button>
+                <p class="js-showCart"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cartQuantity = 0;
+        document.querySelector('.js-showCart').innerHTML = `cartQuantity: ${cartQuantity}`;
+        function updateQuantity(number) {
+            if (number > 0) {
+                if (cartQuantity + number > 10) {
+                    alert('Bu üründen maximum 10 tane alabilirsiniz.');
+                    cartQuantity = 10;
+                } else if (cartQuantity < 10) {
+                    cartQuantity += number;
+                }
+            } else {
+                if (cartQuantity + number >= 0) {
+                    cartQuantity += number;
+                } else if (cartQuantity + number < 0) {
+                    alert('sepetiniz boşaltıldı');
+                    cartQuantity = 0;
+                }
+            }
+            document.querySelector('.js-showCart').innerHTML = `cartQuantity: ${cartQuantity}`;
+        }
+    </script>
+
+
+
+    <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+    <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>

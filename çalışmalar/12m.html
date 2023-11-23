@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/Extra_css/extra.css" />
+    <title>App</title>
+    <style></style>
+</head>
+
+<body class="bg-dark text-white px-3">
+    <div class="container m-5">
+        <div class="row">
+            <div class="col-12 mb-3">
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        //12M
+        function addNum(array, num) {
+            return array.map(value => value + num);
+        };
+
+        //üstteki fonksiyonla aynı işlevde farklı bir yazımı:  
+        //const addNum = (array, num) => array.map(value => value + num);
+
+        console.log(addNum([1, 2, 7], 2));
+
+        //12N
+
+        //food değeri egg ile EŞLEŞMİYOR İSE filterin oluşturduğu arraye bu değeri atar. >> Array [ "apple", "armut" ]
+        function removeEgg(foods) {
+            return foods.filter((food) => food !== 'egg')
+        };
+        console.log(removeEgg(['egg', 'apple', 'egg', 'armut', 'egg']));
+
+
+        //food değeri egg ile EŞLEŞİYOR İSE filterın oluşturduğu yeni arraye bu değeri atar. >> Array(3) [ "egg", "egg", "egg" ]
+        function findEgg(foods) {
+            return foods.filter((food) => food === 'egg')
+        };
+        console.log(findEgg(['egg', 'apple', 'egg', 'armut', 'egg']));
+
+        //12o
+
+        function removeTwoEgg(foods) {
+            let removedEgg = 0;
+
+            return foods.filter(food => {
+                if (food === 'egg' && removedEgg < 2) {
+                    removedEgg++;
+                    return false;
+                }
+                
+                return true;
+            });
+
+        };
+
+
+        console.log(removeTwoEgg(['egg', 'apple', 'egg', 'armut', 'egg']));
+    </script>
+
+
+
+    <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+    <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>

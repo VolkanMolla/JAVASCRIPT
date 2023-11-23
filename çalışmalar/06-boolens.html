@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/Bootstrap_css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/Extra_css/extra.css" />
+  <title>boolens</title>
+  <style></style>
+</head>
+
+<body class="bg-dark">
+  <div class="container m-5">
+    <div class="row">
+      <div class="col"></div>
+    </div>
+  </div>
+
+  <script>
+    console.log(3 < 5);
+    console.log(5 === `5.00`); // false
+    console.log(5 == `5.00`); // true
+
+    if (true) {
+      console.log('hello');
+    } else {
+      console.log('else')
+    }
+
+
+    const age = 15;
+
+    if (age >= 18) {
+      console.log('you can drive');
+    } else if (age >= 14)
+      console.log('almost there!');
+    else {
+      console.log('you can not drive');
+    }
+    /////////////////////////////////////
+
+
+    if (false || 0 || null || undefined || '' || NaN) {
+      console.log('falsy')
+    }
+
+    if (2) {
+      console.log('truthy')
+    }
+
+    const elimdekielmalar = 5;
+    if (elimdekielmalar) {
+      console.log('elimde elma var');
+    }
+    console.log(!0);
+    console.log('text' / 5);
+
+    let degiskenX;
+    console.log(degiskenX);
+
+    const result = true ? 'truthy' : 'falsy'; // truthy
+    console.log(result);
+
+    const result2 = 0 ? 'truthy' : 'falsy'; // falsy
+    console.log(result2);
+
+    false && console.log('burasi gözükmeyecek');
+    true && console.log('hello bebeğim');
+    const message = false && 'gözükmicek';
+    console.log(message);
+    const message2 = true && 'hello yavrum';
+    console.log(message2);
+
+    const currency = 'EUR' || 'USD' ;
+    console.log(currency);
+
+    ////////////////////////////////
+  </script>
+
+  <script src="js/Bootstrap_js/bootstrap.bundle.min.js"></script>
+  <script src="js/Extra_js/extra.js"></script>
+</body>
+
+</html>
